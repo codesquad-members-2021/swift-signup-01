@@ -19,11 +19,17 @@ class SignUpViewController: UIViewController {
     }
     @IBOutlet weak var nextButton: UIButton!
     
+    private var signUp: SignUpManageable!
     private lazy var textFieldDelegate = TextFieldDelegate(self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         signUpTextFields.first?.becomeFirstResponder()
+        signUp = SignUpManager(userManageable: User(), textFieldMapper: TextFieldMapper(userInfos: [ID(), Password(), Password()]))
+    }
+    
+    func mapping(by index: Int) -> Validatable? {
+        return self.signUp.mapping(by: index)
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {

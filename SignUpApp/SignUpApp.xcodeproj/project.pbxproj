@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		933A1E0E2613350E0017FFBD /* ValidationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E0D2613350E0017FFBD /* ValidationFactory.swift */; };
+		933A1E11261335230017FFBD /* TextFieldMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E10261335230017FFBD /* TextFieldMapper.swift */; };
 		934F55A62611988E0060588F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55A52611988E0060588F /* AppDelegate.swift */; };
 		934F55A82611988E0060588F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55A72611988E0060588F /* SceneDelegate.swift */; };
 		934F55AA2611988E0060588F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55A92611988E0060588F /* SignUpViewController.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		933A1E0D2613350E0017FFBD /* ValidationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationFactory.swift; sourceTree = "<group>"; };
+		933A1E10261335230017FFBD /* TextFieldMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldMapper.swift; sourceTree = "<group>"; };
 		934F55A22611988E0060588F /* SignUpApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignUpApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		934F55A52611988E0060588F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		934F55A72611988E0060588F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 				934F55A72611988E0060588F /* SceneDelegate.swift */,
 				934F55A92611988E0060588F /* SignUpViewController.swift */,
 				934F55C32611A7D90060588F /* SignUpViewControllerDelegate.swift */,
+				933A1E0D2613350E0017FFBD /* ValidationFactory.swift */,
+				933A1E10261335230017FFBD /* TextFieldMapper.swift */,
 				934F55CB2611B39C0060588F /* SignUpManager.swift */,
 				934F55D426120C960060588F /* SignUpManageable.swift */,
 				934F55AB2611988E0060588F /* Main.storyboard */,
@@ -166,10 +172,12 @@
 				934F55BB26119AE70060588F /* User.swift in Sources */,
 				934F55C42611A7D90060588F /* SignUpViewControllerDelegate.swift in Sources */,
 				934F55AA2611988E0060588F /* SignUpViewController.swift in Sources */,
+				933A1E11261335230017FFBD /* TextFieldMapper.swift in Sources */,
 				934F55D12611D34F0060588F /* UserManageable.swift in Sources */,
 				934F55A62611988E0060588F /* AppDelegate.swift in Sources */,
 				934F55D526120C960060588F /* SignUpManageable.swift in Sources */,
 				934F55CC2611B39C0060588F /* SignUpManager.swift in Sources */,
+				933A1E0E2613350E0017FFBD /* ValidationFactory.swift in Sources */,
 				934F55C026119B880060588F /* Information.swift in Sources */,
 				934F55A82611988E0060588F /* SceneDelegate.swift in Sources */,
 			);
@@ -318,15 +326,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8G43M5CX79;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = SignUpApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zombietux.SignUpApp;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.codesquad.SignUpApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -337,15 +347,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8G43M5CX79;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = SignUpApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zombietux.SignUpApp;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.codesquad.SignUpApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

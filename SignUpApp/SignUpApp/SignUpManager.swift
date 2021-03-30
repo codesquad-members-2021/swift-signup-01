@@ -7,29 +7,27 @@
 
 import Foundation
 
-class SignUpManager {
+class SignUpManager: SignUpManageable {
     
     //MARK:- 속성
     private var user: UserManageable
+    private let textFieldMapper: TextFieldMappable
     
-    init(userManageable: UserManageable) {
+    init(userManageable: UserManageable, textFieldMapper: TextFieldMappable) {
         self.user = userManageable
+        self.textFieldMapper = textFieldMapper
     }
     
     //MARK:- 행동
     func isValidateId(id: String) -> Bool {
-        return user.isValidId(id: id)
+        return user.isValidId(input: id)
     }
     
     func isValidatePassword(pwd: String) -> Bool {
-        return user.isValidPassword(pwd: pwd)
+        return user.isValidPassword(input: pwd)
     }
     
-    func isValidateEmail(email: String) -> Bool {
-        return user.isValidEmail(email: email)
-    }
-    
-    func isValidatePhoneNumber(phoneNumber: String) -> Bool {
-        return user.isValidPhoneNumber(phoneNumber: phoneNumber)
+    func mapping(by index: Int) -> Validatable? {
+        return textFieldMapper.mapping(by: index)
     }
 }

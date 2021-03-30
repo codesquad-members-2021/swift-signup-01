@@ -21,6 +21,9 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let index = self.signUpViewController?.signUpTextFields.firstIndex(of: textField) else { return }
+        guard let validatable = self.signUpViewController?.mapping(by: index) else { return }
+        print(validatable.self)
+        print(ValidationFactory.isValid(valid: validatable, textFieldText: textField.text ?? ""))
     }
 
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
