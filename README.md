@@ -1,4 +1,4 @@
-# swift-signup
-스위프트 회원가입 프로젝트
+# swift-signup-01
+회원가입 연습 프로젝트 - 만사+리아
 
-git 이상해...
+git 이상해..
