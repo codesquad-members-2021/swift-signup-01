@@ -7,32 +7,67 @@
 
 import Foundation
 
-struct User: UserManageable {
-    private let id: String
-    private let password: String
+class User: UserManageable {
+    private let id: ID
+    private let password: Password
     private let information: Information
     
-    func isValidId(id: String) -> Bool {
+    init(id: ID, password: Password, information: Information) {
+        self.id = id
+        self.password = password
+        self.information = information
+    }
+    
+    convenience init() {
+        let id = ID(id: "")
+        let password = Password(password: "")
+        let information = Information(name: "", email: Email(email: ""), birth: "", phoneNumber: PhoneNumber(phoneNumber: ""), interest: [])
+        self.init(id: id, password: password, information: information)
+    }
+    
+    func isValidId(input id: String) -> Bool {
+        return self.id.isValid(input: id)
+    }
+    
+    func isValidPassword(input pwd: String) -> Bool {
+        return self.password.isValid(input: pwd)
+    }
+}
+
+class ID: Validatable {
+    private let id: String
+    
+    init(id: String) {
+        self.id = id
+    }
+    
+    convenience init() {
+        let id = ""
+        self.init(id: id)
+    }
+    
+    func isValid(input: String) -> Bool {
         let idRegEx = "^[a-z0-9_-]{5,20}$"
         let idValidation = NSPredicate(format: "SELF MATCHES %@", idRegEx)
-        return idValidation.evaluate(with: id)
+        return idValidation.evaluate(with: input)
+    }
+}
+
+class Password: Validatable {
+    private let password: String
+    
+    init(password: String) {
+        self.password = password
     }
     
-    func isValidPassword(pwd: String) -> Bool {
+    convenience init() {
+        let password = ""
+        self.init(password: password)
+    }
+    
+    func isValid(input: String) -> Bool {
         let passwordRegEx = "^[a-zA-Z0-9!@#$%]{8,16}$"
         let passwordValidation = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
-        return passwordValidation.evaluate(with: pwd)
-    }
-    
-    func isValidEmail(email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailValidation = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-        return emailValidation.evaluate(with: email)
-    }
-    
-    func isValidPhoneNumber(phoneNumber: String) -> Bool {
-        let phoneNumberRegex = "^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$"
-        let phoneNumberValidation = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegex)
-        return phoneNumberValidation.evaluate(with: phoneNumber)
+        return passwordValidation.evaluate(with: input)
     }
 }
