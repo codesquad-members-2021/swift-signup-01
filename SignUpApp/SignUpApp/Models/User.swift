@@ -21,9 +21,9 @@ class User: UserManageable {
     }
     
     convenience init() {
-        let id = ID(id: "")
-        let password = Password(password: "")
-        let information = Information(name: Name(name: ""), email: Email(email: ""), birth: "", phoneNumber: PhoneNumber(phoneNumber: ""), interest: [])
+        let id = ID()
+        let password = Password()
+        let information = Information(name: Name(), email: Email(), birth: "", phoneNumber: PhoneNumber(phoneNumber: ""), interest: [])
         
         self.init(id: id, password: password, information: information)
     }
