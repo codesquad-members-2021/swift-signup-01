@@ -50,6 +50,7 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
         
         if isValid {
             self.updateColor(UIColor.systemGreen, textField: textField, labelIndex: index)
+            NotificationCenter.default.post(name: SignUpManager.NotificationName.didUpdateTextField, object: index)
         } else {
             self.updateColor(UIColor.systemRed, textField: textField, labelIndex: index)
         }

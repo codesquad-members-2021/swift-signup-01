@@ -107,7 +107,7 @@ class Password: Validatable {
     //MARK: valid check 내부 메소드
     
     private func checkLength(input: String) -> (Bool, String) {
-        let lengthRegEx = "^{8,16}$"
+        let lengthRegEx = "^.{8,16}$"
         let lengthValidation = NSPredicate(format: "SELF MATCHES %@", lengthRegEx)
         let isValid = lengthValidation.evaluate(with: input)
         let condition = isValid ? Condition.valid : Condition.invalidLength
@@ -116,7 +116,7 @@ class Password: Validatable {
     }
     
     private func checkCapital(input: String) -> (Bool, String) {
-        let capitalRegEx = "^(?=.*[A-Z])$"
+        let capitalRegEx = "^(?=.*[A-Z]).{1,}$"
         let capitalValidation = NSPredicate(format: "SELF MATCHES %@", capitalRegEx)
         let isValid = capitalValidation.evaluate(with: input)
         let condition = isValid ? Condition.valid : Condition.missingCapital
@@ -125,7 +125,7 @@ class Password: Validatable {
     }
     
     private func checkNumber(input: String) -> (Bool, String) {
-        let numberRegEx = "^(?=.*[0-9])$"
+        let numberRegEx = "^(?=.*[0-9]).{1,}$"
         let numberValidation = NSPredicate(format: "SELF MATCHES %@", numberRegEx)
         let isValid = numberValidation.evaluate(with: input)
         let condition = isValid ? Condition.valid : Condition.missingNumber
@@ -134,21 +134,11 @@ class Password: Validatable {
     }
     
     private func checkSpecial(input: String) -> (Bool, String) {
-        let specialRegEx = "^(?=.*[!@#$%])$"
+        let specialRegEx = "^(?=.*[!@#$%]).{1,}$"
         let specialValidation = NSPredicate(format: "SELF MATCHES %@", specialRegEx)
         let isValid = specialValidation.evaluate(with: input)
         let condition = isValid ? Condition.valid : Condition.missingSpecial
         
         return (isValid, condition)
-    }
-}
-
-class PasswordCheck: Validatable {
-    func isValid(input: String) -> (Bool, String) {
-        <#code#>
-    }
-    
-    func saveProperty(input: String) {
-        <#code#>
     }
 }
