@@ -8,13 +8,13 @@
 import Foundation
 
 class Information {
-    private let name: String
+    private let name: Name
     private let email: Email
     private let birth: String
     private let phoneNumber: PhoneNumber
     private let interest: [String]
     
-    init(name: String, email: Email, birth: String, phoneNumber: PhoneNumber, interest: [String]) {
+    init(name: Name, email: Email, birth: String, phoneNumber: PhoneNumber, interest: [String]) {
         self.name = name
         self.email = email
         self.birth = birth
@@ -100,3 +100,21 @@ class Name: Validatable {
         return (isValid, condition)
     }
 }
+
+class Name: Validatable {
+    private let name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    convenience init() {
+        let name = ""
+        self.init(name: name)
+    }
+    
+    func isValid(input: String) -> Bool {
+        return input.count > 0
+    }
+}
+
