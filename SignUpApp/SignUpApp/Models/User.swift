@@ -100,36 +100,32 @@ class Password: Validatable {
     //MARK: valid check 내부 메소드
     
     private func checkLength(input: String) -> (Bool, String) {
-        let lengthRegEx = "^{8,16}$"
-        let lengthValidation = NSPredicate(format: "SELF MATCHES %@", lengthRegEx)
-        let isValid = lengthValidation.evaluate(with: input)
+        let lengthRegEx = "^.{8,16}$"
+        let isValid = NSPredicate(format: "SELF MATCHES %@", lengthRegEx).evaluate(with: input)
         let condition = isValid ? Condition.valid : Condition.invalidLength
         
         return (isValid, condition)
     }
     
     private func checkCapital(input: String) -> (Bool, String) {
-        let capitalRegEx = "^(?=.*[A-Z])$"
-        let capitalValidation = NSPredicate(format: "SELF MATCHES %@", capitalRegEx)
-        let isValid = capitalValidation.evaluate(with: input)
+        let capitalRegEx = "^(?=.*[A-Z]).{1,}$"
+        let isValid = NSPredicate(format: "SELF MATCHES %@", capitalRegEx).evaluate(with: input)
         let condition = isValid ? Condition.valid : Condition.missingCapital
         
         return (isValid, condition)
     }
     
     private func checkNumber(input: String) -> (Bool, String) {
-        let numberRegEx = "^(?=.*[0-9])$"
-        let numberValidation = NSPredicate(format: "SELF MATCHES %@", numberRegEx)
-        let isValid = numberValidation.evaluate(with: input)
+        let numberRegEx = "^(?=.*[0-9]).{1,}$"
+        let isValid = NSPredicate(format: "SELF MATCHES %@", numberRegEx).evaluate(with: input)
         let condition = isValid ? Condition.valid : Condition.missingNumber
         
         return (isValid, condition)
     }
     
     private func checkSpecial(input: String) -> (Bool, String) {
-        let specialRegEx = "^(?=.*[!@#$%])$"
-        let specialValidation = NSPredicate(format: "SELF MATCHES %@", specialRegEx)
-        let isValid = specialValidation.evaluate(with: input)
+        let specialRegEx = "^(?=.*[!@#$%]).{1,}$"
+        let isValid = NSPredicate(format: "SELF MATCHES %@", specialRegEx).evaluate(with: input)
         let condition = isValid ? Condition.valid : Condition.missingSpecial
         
         return (isValid, condition)

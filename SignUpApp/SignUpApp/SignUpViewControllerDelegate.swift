@@ -22,8 +22,11 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let index = self.signUpViewController?.signUpTextFields.firstIndex(of: textField) else { return }
         guard let validatable = self.signUpViewController?.mapping(by: index) else { return }
-        let isValid = ValidationFactory.isValid(valid: validatable, textFieldText: textField.text ?? "")
-        self.updateTextFieldBorder(isValid: isValid, condition: "알맞은 형식입니다", labelIndex: index, textField: textField)
+        let conditionTuple = ValidationFactory.isValid(valid: validatable, textFieldText: textField.text ?? "")
+        let isValid = conditionTuple.0
+        let condition = conditionTuple.1
+        
+        self.updateTextFieldBorder(isValid: isValid, condition: condition, labelIndex: index, textField: textField)
     }
 
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
@@ -44,6 +47,7 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
     
     private func updateTextFieldBorder(isValid: Bool, condition: String, labelIndex index: Int, textField: UITextField) {
         textField.layer.borderWidth = 1
+        
         if isValid {
             textField.layer.borderColor = UIColor.systemGreen.cgColor
             self.signUpViewController?.conditionLabels[index].textColor = .systemGreen
@@ -52,10 +56,7 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
             self.signUpViewController?.conditionLabels[index].textColor = .systemRed
         }
         
-        updateCondition(condition: condition, labelIndex: index)
-    }
-    
-    private func updateCondition(condition: String, labelIndex index: Int) {
         self.signUpViewController?.conditionLabels[index].text = condition
     }
+    
 }
