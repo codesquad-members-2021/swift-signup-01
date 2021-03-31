@@ -29,7 +29,7 @@ class Email: Validatable {
         static let invalid = "이메일 주소를 다시 확인해주세요."
     }
     
-    private let email: String
+    private var email: String
     
     init(email: String) {
         self.email = email
@@ -48,6 +48,10 @@ class Email: Validatable {
         
         return (isValid, condition)
     }
+    
+    func saveProperty(input: String) {
+        self.email = input
+    }
 }
 
 class PhoneNumber: Validatable {
@@ -56,7 +60,7 @@ class PhoneNumber: Validatable {
         static let invalid = "형식에 맞지 않는 번호입니다."
     }
     
-    private let phoneNumber: String
+    private var phoneNumber: String
     
     init(phoneNumber: String) {
         self.phoneNumber = phoneNumber
@@ -75,6 +79,10 @@ class PhoneNumber: Validatable {
         
         return (isValid, condition)
     }
+    
+    func saveProperty(input: String) {
+        self.phoneNumber = input
+    }
 }
 
 class Name: Validatable {
@@ -83,7 +91,7 @@ class Name: Validatable {
         static let invalid = "이름은 필수 입력 항목입니다."
     }
     
-    private let name: String
+    private var name: String
     
     init(name: String) {
         self.name = name
@@ -98,6 +106,10 @@ class Name: Validatable {
         let condition = isValid ? Condition.valid : Condition.invalid
         
         return (isValid, condition)
+    }
+    
+    func saveProperty(input: String) {
+        self.name = input
     }
 }
 

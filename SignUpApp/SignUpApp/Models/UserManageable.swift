@@ -14,4 +14,5 @@ protocol UserManageable {
 
 protocol Validatable {
     func isValid(input: String) -> (Bool, String)
+    func saveProperty(input: String)
 }

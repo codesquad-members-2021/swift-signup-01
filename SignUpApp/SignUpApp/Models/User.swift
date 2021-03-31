@@ -44,7 +44,7 @@ class ID: Validatable {
         static let duplictated = "이미 사용중인 아이디입니다"
     }
     
-    private let id: String
+    private var id: String
     
     init(id: String) {
         self.id = id
@@ -64,6 +64,9 @@ class ID: Validatable {
         return (isValid, condition)
     }
     
+    func saveProperty(input: String) {
+        self.id = input
+    }
 }
 
 class Password: Validatable {
@@ -75,7 +78,7 @@ class Password: Validatable {
         static let missingSpecial = "특수문자를 최소 1자 이상 포함해주세요."
     }
     
-    private let password: String
+    private var password: String
     
     init(password: String) {
         self.password = password
@@ -95,6 +98,10 @@ class Password: Validatable {
         if !checkSpecial(input: input).0 { return checkSpecial(input: input) }
         
         return (true, Condition.valid)
+    }
+    
+    func saveProperty(input: String) {
+        self.password = input
     }
     
     //MARK: valid check 내부 메소드
@@ -133,7 +140,15 @@ class Password: Validatable {
         let condition = isValid ? Condition.valid : Condition.missingSpecial
         
         return (isValid, condition)
-        
+    }
+}
+
+class PasswordCheck: Validatable {
+    func isValid(input: String) -> (Bool, String) {
+        <#code#>
     }
     
+    func saveProperty(input: String) {
+        <#code#>
+    }
 }
