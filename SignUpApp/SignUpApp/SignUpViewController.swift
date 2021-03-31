@@ -18,7 +18,11 @@ class SignUpViewController: UIViewController {
         }
     }
     @IBOutlet var conditionLabels: [UILabel]!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton! {
+        didSet {
+            nextButton.isEnabled = false
+        }
+    }
     
     private var signUp: SignUpManageable!
     private lazy var textFieldDelegate = TextFieldDelegate(self)
