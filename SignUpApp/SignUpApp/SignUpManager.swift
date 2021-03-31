@@ -19,14 +19,6 @@ class SignUpManager: SignUpManageable {
     }
     
     //MARK:- 행동
-    func isValidateId(id: String) -> Bool {
-        return user.isValidId(input: id)
-    }
-    
-    func isValidatePassword(pwd: String) -> Bool {
-        return user.isValidPassword(input: pwd)
-    }
-    
     func mapping(by index: Int) -> Validatable? {
         return textFieldMapper.mapping(by: index)
     }

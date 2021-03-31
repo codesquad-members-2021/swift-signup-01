@@ -17,6 +17,7 @@ class SignUpViewController: UIViewController {
             }
         }
     }
+    @IBOutlet var conditionLabels: [UILabel]!
     @IBOutlet weak var nextButton: UIButton!
     
     private var signUp: SignUpManageable!
@@ -25,7 +26,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         signUpTextFields.first?.becomeFirstResponder()
-        signUp = SignUpManager(userManageable: User(), textFieldMapper: TextFieldMapper(userInfos: [ID(), Password(), Password()]))
+        signUp = SignUpManager(userManageable: User(), textFieldMapper: TextFieldMapper(userInfos: [ID(), Password(), Password(), Name()]))
     }
     
     func mapping(by index: Int) -> Validatable? {

@@ -8,7 +8,5 @@
 import Foundation
 
 protocol SignUpManageable {
-    func isValidateId(id: String) -> Bool
-    func isValidatePassword(pwd: String) -> Bool
     func mapping(by index: Int) -> Validatable?
 }
