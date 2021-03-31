@@ -101,20 +101,4 @@ class Name: Validatable {
     }
 }
 
-class Name: Validatable {
-    private let name: String
-    
-    init(name: String) {
-        self.name = name
-    }
-    
-    convenience init() {
-        let name = ""
-        self.init(name: name)
-    }
-    
-    func isValid(input: String) -> Bool {
-        return input.count > 0
-    }
-}
 
