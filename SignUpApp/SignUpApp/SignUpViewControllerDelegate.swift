@@ -22,14 +22,20 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let index = self.signUpViewController?.signUpTextFields.firstIndex(of: textField) else { return }
         guard let validatable = self.signUpViewController?.mapping(by: index) else { return }
+        
         ValidationFactory.saveProperty(valid: validatable, textFieldText: textField.text ?? "")
-        let tuple = ValidationFactory.isValid(valid: validatable, textFieldText: textField.text ?? "")
+        
+        let text = index == 2 ? self.signUpViewController?.signUpTextFields[1].text ?? "" : textField.text ?? ""
+        let tuple = ValidationFactory.isValid(valid: validatable, textFieldText: text)
         let isValid = tuple.0
         let condition = tuple.1
+        
         self.updateTextField(isValid: isValid, condition: condition, labelIndex: index, textField: textField)
     }
 
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.black.cgColor
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
