@@ -27,8 +27,8 @@ class SignUpManager: SignUpManageable {
         return textFieldMapper.mapping(by: index)
     }
     
-    func isEnableNext(index: Int) -> Bool {
-        self.isEnabledArray[index] = true
+    func isEnableNext(index: Int, isVaild: Bool) -> Bool {
+        self.isEnabledArray[index] = isVaild
         return isEnabledArray[0] && isEnabledArray[1] && isEnabledArray[2] && isEnabledArray[3]
     }
 }

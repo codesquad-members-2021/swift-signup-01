@@ -39,7 +39,6 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        //class에 값을 넣고 다음 텍스트 필드로
         guard let index = self.signUpViewController?.signUpTextFields.firstIndex(of: textField) else { return false }
         
         if let nextResponder = self.signUpViewController?.signUpTextFields[index + 1] {
@@ -52,16 +51,20 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
     }
     
     private func updateTextField(isValid: Bool, condition: String, labelIndex index: Int, textField: UITextField) {
+        var info = [String: Any]()
+        info["index"] = index
+        info["isValid"] = isValid
+        
         textField.layer.borderWidth = 1
         
         if isValid {
             self.updateColor(UIColor.systemGreen, textField: textField, labelIndex: index)
-            NotificationCenter.default.post(name: SignUpManager.NotificationName.didUpdateTextField, object: index)
         } else {
             self.updateColor(UIColor.systemRed, textField: textField, labelIndex: index)
         }
         
         self.signUpViewController?.conditionLabels[index].text = condition
+        NotificationCenter.default.post(name: SignUpManager.NotificationName.didUpdateTextField, object: self, userInfo: info)
     }
     
     private func updateColor(_ color: UIColor, textField: UITextField, labelIndex index: Int) {
