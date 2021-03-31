@@ -8,10 +8,10 @@
 import Foundation
 
 protocol UserManageable {
-    func isValidId(input id: String) -> Bool
-    func isValidPassword(input pwd: String) -> Bool
+    func isValidId(input id: String) -> (Bool, String)
+    func isValidPassword(input pwd: String) -> (Bool, String)
 }
 
 protocol Validatable {
-    func isValid(input: String) -> Bool
+    func isValid(input: String) -> (Bool, String)
 }

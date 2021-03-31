@@ -25,16 +25,25 @@ class User: UserManageable {
         self.init(id: id, password: password, information: information)
     }
     
-    func isValidId(input id: String) -> Bool {
+    func isValidId(input id: String) -> (Bool, String) {
         return self.id.isValid(input: id)
     }
     
-    func isValidPassword(input pwd: String) -> Bool {
+    func isValidPassword(input pwd: String) -> (Bool, String) {
         return self.password.isValid(input: pwd)
     }
 }
 
+
+// MARK:- 세부 타입 선언
+
 class ID: Validatable {
+    enum Condition {
+        static let valid = "사용 가능한 아이디입니다."
+        static let invalid = "5~20자의 영문 소문자, 숫자와 특수기호(_)(-) 만 사용 가능합니다."
+        static let duplictated = "이미 사용중인 아이디입니다"
+    }
+    
     private let id: String
     
     init(id: String) {
@@ -46,14 +55,26 @@ class ID: Validatable {
         self.init(id: id)
     }
     
-    func isValid(input: String) -> Bool {
+    func isValid(input: String) -> (Bool, String) {
         let idRegEx = "^[a-z0-9_-]{5,20}$"
         let idValidation = NSPredicate(format: "SELF MATCHES %@", idRegEx)
-        return idValidation.evaluate(with: input)
+        let isValid = idValidation.evaluate(with: input)
+        let condition = isValid ? Condition.valid : Condition.invalid
+        
+        return (isValid, condition)
     }
+    
 }
 
 class Password: Validatable {
+    enum Condition {
+        static let valid = "안전한 비밀번호입니다."
+        static let invalidLength = "8자 이상 16자 이하로 입력해주세요."
+        static let missingCapital = "영문 대문자를 최소 1자 이상 포함해주세요. "
+        static let missingNumber = "숫자를 최소 1자 이상 포함해주세요."
+        static let missingSpecial = "특수문자를 최소 1자 이상 포함해주세요."
+    }
+    
     private let password: String
     
     init(password: String) {
@@ -65,9 +86,54 @@ class Password: Validatable {
         self.init(password: password)
     }
     
-    func isValid(input: String) -> Bool {
-        let passwordRegEx = "^[a-zA-Z0-9!@#$%]{8,16}$"
-        let passwordValidation = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
-        return passwordValidation.evaluate(with: input)
+    //MARK: -METHOD
+    
+    func isValid(input: String) -> (Bool, String) {
+        if !checkLength(input: input).0 { return checkLength(input: input) }
+        if !checkCapital(input: input).0 { return checkCapital(input: input) }
+        if !checkNumber(input: input).0 { return checkNumber(input: input) }
+        if !checkSpecial(input: input).0 { return checkSpecial(input: input) }
+        
+        return (true, Condition.valid)
     }
+    
+    //MARK: valid check 내부 메소드
+    
+    private func checkLength(input: String) -> (Bool, String) {
+        let lengthRegEx = "^{8,16}$"
+        let lengthValidation = NSPredicate(format: "SELF MATCHES %@", lengthRegEx)
+        let isValid = lengthValidation.evaluate(with: input)
+        let condition = isValid ? Condition.valid : Condition.invalidLength
+        
+        return (isValid, condition)
+    }
+    
+    private func checkCapital(input: String) -> (Bool, String) {
+        let capitalRegEx = "^(?=.*[A-Z])$"
+        let capitalValidation = NSPredicate(format: "SELF MATCHES %@", capitalRegEx)
+        let isValid = capitalValidation.evaluate(with: input)
+        let condition = isValid ? Condition.valid : Condition.missingCapital
+        
+        return (isValid, condition)
+    }
+    
+    private func checkNumber(input: String) -> (Bool, String) {
+        let numberRegEx = "^(?=.*[0-9])$"
+        let numberValidation = NSPredicate(format: "SELF MATCHES %@", numberRegEx)
+        let isValid = numberValidation.evaluate(with: input)
+        let condition = isValid ? Condition.valid : Condition.missingNumber
+        
+        return (isValid, condition)
+    }
+    
+    private func checkSpecial(input: String) -> (Bool, String) {
+        let specialRegEx = "^(?=.*[!@#$%])$"
+        let specialValidation = NSPredicate(format: "SELF MATCHES %@", specialRegEx)
+        let isValid = specialValidation.evaluate(with: input)
+        let condition = isValid ? Condition.valid : Condition.missingSpecial
+        
+        return (isValid, condition)
+        
+    }
+    
 }

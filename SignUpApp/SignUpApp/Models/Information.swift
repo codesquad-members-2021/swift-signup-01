@@ -24,6 +24,11 @@ class Information {
 }
 
 class Email: Validatable {
+    enum Condition {
+        static let valid = ""
+        static let invalid = "이메일 주소를 다시 확인해주세요."
+    }
+    
     private let email: String
     
     init(email: String) {
@@ -35,14 +40,22 @@ class Email: Validatable {
         self.init(email: email)
     }
     
-    func isValid(input: String) -> Bool {
+    func isValid(input: String) -> (Bool, String) {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailValidation = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-        return emailValidation.evaluate(with: input)
+        let isValid = emailValidation.evaluate(with: input)
+        let condition = isValid ? Condition.valid : Condition.invalid
+        
+        return (isValid, condition)
     }
 }
 
 class PhoneNumber: Validatable {
+    enum Condition {
+        static let valid = ""
+        static let invalid = "형식에 맞지 않는 번호입니다."
+    }
+    
     private let phoneNumber: String
     
     init(phoneNumber: String) {
@@ -54,9 +67,36 @@ class PhoneNumber: Validatable {
         self.init(phoneNumber: phoneNumber)
     }
     
-    func isValid(input: String) -> Bool {
+    func isValid(input: String) -> (Bool, String) {
         let phoneNumberRegex = "^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$"
         let phoneNumberValidation = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegex)
-        return phoneNumberValidation.evaluate(with: input)
+        let isValid = phoneNumberValidation.evaluate(with: input)
+        let condition = isValid ? Condition.valid : Condition.invalid
+        
+        return (isValid, condition)
+    }
+}
+
+class Name: Validatable {
+    enum Condition {
+        static let valid = ""
+        static let invalid = "이름은 필수 입력 항목입니다."
+    }
+    
+    private let name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    convenience init() {
+        let name = ""
+        self.init(name: name)
+    }
+    
+    func isValid(input: String) -> (Bool, String) {
+        let isValid = input.count > 0
+        let condition = isValid ? Condition.valid : Condition.invalid
+        
+        return (isValid, condition)
     }
 }
