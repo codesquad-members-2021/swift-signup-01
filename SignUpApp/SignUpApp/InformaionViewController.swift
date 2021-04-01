@@ -112,5 +112,7 @@ class InformaionViewController: UIViewController, EditViewControllerDelegate {
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
+        let pricvacyVC = self.storyboard?.instantiateViewController(withIdentifier: "PrivacyViewController") as! PrivacyViewController
+        self.present(pricvacyVC, animated: true, completion: nil)
     }
 }

@@ -9,21 +9,26 @@ import UIKit
 
 class PrivacyViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        configureAgreeAlertControl()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func configureAgreeAlertControl() {
+        let actionSheet = UIAlertController(title: .none, message: .none, preferredStyle: .actionSheet)
+        actionSheet.view.tintColor = .systemGreen
+        let agree = UIAlertAction(title: "동의", style: .default) { action in
+            self.nextVC()
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: .none)
+        
+        actionSheet.addAction(agree)
+        actionSheet.addAction(cancel)
+        
+        self.present(actionSheet, animated: true, completion: nil)
     }
-    */
-
+    
+    private func nextVC() {
+        
+    }
 }

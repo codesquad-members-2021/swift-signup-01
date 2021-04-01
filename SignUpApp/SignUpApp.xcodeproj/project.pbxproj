@@ -18,6 +18,8 @@
 		933A1E2F26158C6C0017FFBD /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E2E26158C6C0017FFBD /* Name.swift */; };
 		933A1E39261598D40017FFBD /* InformaionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E38261598D40017FFBD /* InformaionViewController.swift */; };
 		933A1E3C2615A3A60017FFBD /* Birth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E3B2615A3A60017FFBD /* Birth.swift */; };
+		933A1E3F2615F7070017FFBD /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E3E2615F7060017FFBD /* PrivacyViewController.swift */; };
+		933A1E422615FD450017FFBD /* InterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E412615FD450017FFBD /* InterestViewController.swift */; };
 		934F55A62611988E0060588F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55A52611988E0060588F /* AppDelegate.swift */; };
 		934F55A82611988E0060588F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55A72611988E0060588F /* SceneDelegate.swift */; };
 		934F55AA2611988E0060588F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55A92611988E0060588F /* SignUpViewController.swift */; };
@@ -44,6 +46,8 @@
 		933A1E2E26158C6C0017FFBD /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
 		933A1E38261598D40017FFBD /* InformaionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformaionViewController.swift; sourceTree = "<group>"; };
 		933A1E3B2615A3A60017FFBD /* Birth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Birth.swift; sourceTree = "<group>"; };
+		933A1E3E2615F7060017FFBD /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		933A1E412615FD450017FFBD /* InterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestViewController.swift; sourceTree = "<group>"; };
 		934F55A22611988E0060588F /* SignUpApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignUpApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		934F55A52611988E0060588F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		934F55A72611988E0060588F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 			children = (
 				934F55A52611988E0060588F /* AppDelegate.swift */,
 				934F55A72611988E0060588F /* SceneDelegate.swift */,
+				933A1E412615FD450017FFBD /* InterestViewController.swift */,
+				933A1E3E2615F7060017FFBD /* PrivacyViewController.swift */,
 				933A1E38261598D40017FFBD /* InformaionViewController.swift */,
 				934F55A92611988E0060588F /* SignUpViewController.swift */,
 				934F55C32611A7D90060588F /* SignUpViewControllerDelegate.swift */,
@@ -202,6 +208,7 @@
 				933A1E3C2615A3A60017FFBD /* Birth.swift in Sources */,
 				934F55BB26119AE70060588F /* User.swift in Sources */,
 				934F55C42611A7D90060588F /* SignUpViewControllerDelegate.swift in Sources */,
+				933A1E422615FD450017FFBD /* InterestViewController.swift in Sources */,
 				934F55AA2611988E0060588F /* SignUpViewController.swift in Sources */,
 				933A1E2F26158C6C0017FFBD /* Name.swift in Sources */,
 				933A1E11261335230017FFBD /* TextFieldMapper.swift in Sources */,
@@ -213,6 +220,7 @@
 				933A1E2326158BCF0017FFBD /* Password.swift in Sources */,
 				933A1E0E2613350E0017FFBD /* ValidationFactory.swift in Sources */,
 				934F55C026119B880060588F /* Information.swift in Sources */,
+				933A1E3F2615F7070017FFBD /* PrivacyViewController.swift in Sources */,
 				933A1E2926158C240017FFBD /* Email.swift in Sources */,
 				933A1E39261598D40017FFBD /* InformaionViewController.swift in Sources */,
 				934F55A82611988E0060588F /* SceneDelegate.swift in Sources */,
