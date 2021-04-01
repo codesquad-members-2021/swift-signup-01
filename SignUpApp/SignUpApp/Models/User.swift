@@ -13,19 +13,20 @@ class User: UserManageable {
     private let passwordConfirm: PasswordConfirm
     private let information: Information
     
-    init(id: ID, password: Password, information: Information) {
+    init(id: ID, password: Password, information: Information, passwordConfirm: PasswordConfirm) {
         self.id = id
         self.password = password
-        self.passwordConfirm = PasswordConfirm(password: "")
+        self.passwordConfirm = passwordConfirm
         self.information = information
     }
     
     convenience init() {
         let id = ID()
         let password = Password()
-        let information = Information(name: Name(), email: Email(), birth: "", phoneNumber: PhoneNumber(phoneNumber: ""), interest: [])
+        let passwordConfirm = PasswordConfirm()
+        let information = Information(name: Name(), email: Email(), birth: Birth(), phoneNumber: PhoneNumber(), interest: [])
         
-        self.init(id: id, password: password, information: information)
+        self.init(id: id, password: password, information: information, passwordConfirm: passwordConfirm)
     }
     
     func isValidId(input id: String) -> (Bool, String) {

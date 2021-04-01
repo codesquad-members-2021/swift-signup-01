@@ -9,7 +9,7 @@ import Foundation
 
 class Email: Validatable {
     enum Condition {
-        static let valid = ""
+        static let valid = "올바른 형식입니다."
         static let invalid = "이메일 주소를 다시 확인해주세요."
     }
     
