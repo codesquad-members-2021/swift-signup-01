@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		933A1E0E2613350E0017FFBD /* ValidationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E0D2613350E0017FFBD /* ValidationFactory.swift */; };
 		933A1E11261335230017FFBD /* TextFieldMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E10261335230017FFBD /* TextFieldMapper.swift */; };
+		933A1E1D2615672C0017FFBD /* ViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E1C2615672C0017FFBD /* ViewControllerProtocol.swift */; };
 		934F55A62611988E0060588F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55A52611988E0060588F /* AppDelegate.swift */; };
 		934F55A82611988E0060588F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55A72611988E0060588F /* SceneDelegate.swift */; };
 		934F55AA2611988E0060588F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55A92611988E0060588F /* SignUpViewController.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		933A1E0D2613350E0017FFBD /* ValidationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationFactory.swift; sourceTree = "<group>"; };
 		933A1E10261335230017FFBD /* TextFieldMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldMapper.swift; sourceTree = "<group>"; };
+		933A1E1C2615672C0017FFBD /* ViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerProtocol.swift; sourceTree = "<group>"; };
 		934F55A22611988E0060588F /* SignUpApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignUpApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		934F55A52611988E0060588F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		934F55A72611988E0060588F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				934F55A72611988E0060588F /* SceneDelegate.swift */,
 				934F55A92611988E0060588F /* SignUpViewController.swift */,
 				934F55C32611A7D90060588F /* SignUpViewControllerDelegate.swift */,
+				933A1E1C2615672C0017FFBD /* ViewControllerProtocol.swift */,
 				933A1E0D2613350E0017FFBD /* ValidationFactory.swift */,
 				933A1E10261335230017FFBD /* TextFieldMapper.swift */,
 				934F55CB2611B39C0060588F /* SignUpManager.swift */,
@@ -169,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				933A1E1D2615672C0017FFBD /* ViewControllerProtocol.swift in Sources */,
 				934F55BB26119AE70060588F /* User.swift in Sources */,
 				934F55C42611A7D90060588F /* SignUpViewControllerDelegate.swift in Sources */,
 				934F55AA2611988E0060588F /* SignUpViewController.swift in Sources */,

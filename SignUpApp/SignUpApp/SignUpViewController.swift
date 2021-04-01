@@ -8,8 +8,7 @@
 import UIKit
 import Combine
 
-class SignUpViewController: UIViewController {
-    
+class SignUpViewController: UIViewController, EditViewControllerDelegate {
     @IBOutlet var signUpTextFields: [UITextField]! {
         didSet {
             signUpTextFields.forEach { textField in
@@ -46,6 +45,26 @@ class SignUpViewController: UIViewController {
     
     func mapping(by index: Int) -> Validatable? {
         return self.signUp.mapping(by: index)
+    }
+    
+    func getIndex(textField: UITextField) -> Int? {
+        return self.signUpTextFields.firstIndex(of: textField)
+    }
+    
+    func getTextFieldText(index: Int) -> String {
+        return self.signUpTextFields[index].text ?? ""
+    }
+    
+    func setConditionLabelText(index: Int, condition: String) {
+        self.conditionLabels[index].text = condition
+    }
+    
+    func setConditionLabelColor(index: Int, color: UIColor) {
+        self.conditionLabels[index].textColor = color
+    }
+    
+    func getTextField(index: Int) -> UITextField? {
+        return self.signUpTextFields[index]
     }
     
     private func isEnableNextView(_ notification: Notification) {
