@@ -25,9 +25,9 @@ class InformaionViewController: UIViewController, EditViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        signUp = SignUpManager(userManageable: User(), textFieldMapper: TextFieldMapper(userInfos: [Email(), PhoneNumber()]))
+        signUp = SignUpManager(userManageable: User(), textFieldMapper: TextFieldMapper(userInfos: [Birth() ,Email(), PhoneNumber()]))
         
-        informationTextFields.first?.becomeFirstResponder()
+        datePicker.isHidden = true
         nextButton.isEnabled = false
     }
     

@@ -52,7 +52,8 @@ class SignUpViewController: UIViewController, EditViewControllerDelegate {
     }
     
     func getTextFieldText(index: Int) -> String {
-        return self.signUpTextFields[index].text ?? ""
+        guard let text = index == 2 ? self.signUpTextFields[index+1].text : self.signUpTextFields[index].text ?? "" else { return "" }
+        return text
     }
     
     func setConditionLabelText(index: Int, condition: String) {

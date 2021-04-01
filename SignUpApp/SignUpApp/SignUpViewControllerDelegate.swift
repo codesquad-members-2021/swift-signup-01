@@ -24,8 +24,7 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
         guard let validatable = self.editViewController.mapping(by: index) else { return }
         
         ValidationFactory.saveProperty(valid: validatable, textFieldText: textField.text ?? "")
-        
-        let text = index == 2 ? self.editViewController.getTextFieldText(index: 1) : textField.text ?? ""
+        let text = self.editViewController.getTextFieldText(index: index)
         let tuple = ValidationFactory.isValid(valid: validatable, textFieldText: text)
         let isValid = tuple.0
         let condition = tuple.1
