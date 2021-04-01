@@ -81,6 +81,8 @@ class SignUpViewController: UIViewController, EditViewControllerDelegate {
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
+        let informationVC = self.storyboard?.instantiateViewController(withIdentifier: "InformaionViewController") as! InformaionViewController
+        self.present(informationVC, animated: true, completion: nil)
     }
 }
 
