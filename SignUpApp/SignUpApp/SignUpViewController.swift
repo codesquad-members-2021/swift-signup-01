@@ -71,7 +71,7 @@ class SignUpViewController: UIViewController, EditViewControllerDelegate {
     private func isEnableNextView(_ notification: Notification) {
         guard let dict = notification.userInfo as Dictionary? else { return }
         if let index = dict["index"] as? Int, let isValid = dict["isValid"] as? Bool {
-            if self.signUp.isEnableNext(index: index, isVaild: isValid) {
+            if self.signUp.isEnableNextSignUp(index: index, isVaild: isValid) {
                 self.nextButton.isEnabled = true
                 self.nextButton.backgroundColor = .systemGreen
             } else {

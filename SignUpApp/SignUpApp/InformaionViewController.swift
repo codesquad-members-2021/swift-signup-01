@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class InformaionViewController: UIViewController, EditViewControllerDelegate {
     @IBOutlet weak var nextButton: UIButton!
@@ -18,17 +19,54 @@ class InformaionViewController: UIViewController, EditViewControllerDelegate {
         }
     }
     @IBOutlet var conditionLabels: [UILabel]!
-    @IBOutlet weak var datePicker: UIDatePicker!
     
     private var signUp: SignUpManageable!
     private lazy var textFieldDelegate = TextFieldDelegate(self)
+    private var textFieldPublisher: AnyCancellable!
+    private var datePicker = UIDatePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         signUp = SignUpManager(userManageable: User(), textFieldMapper: TextFieldMapper(userInfos: [Birth() ,Email(), PhoneNumber()]))
         
-        datePicker.isHidden = true
         nextButton.isEnabled = false
+        
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.locale = .autoupdatingCurrent
+        
+        createDatePicker()
+        setTextFieldSubscriber()
+    }
+    
+    private func setTextFieldSubscriber() {
+        textFieldPublisher = NotificationCenter.default
+            .publisher(for: SignUpManager.NotificationName.didUpdateTextField)
+            .sink { notification in
+                DispatchQueue.main.async {
+                    self.isEnableNextView(notification)
+                }
+            }
+    }
+    
+    //MARK:- Date Picker Method
+    private func createDatePicker() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: .none, action: #selector(donePressed))
+        toolbar.setItems([doneButton], animated: true)
+        informationTextFields.first?.inputAccessoryView = toolbar
+        informationTextFields.first?.inputView = datePicker
+    }
+    
+    @objc func donePressed() {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        
+        informationTextFields.first?.text = formatter.string(from: datePicker.date)
+        self.view.endEditing(true)
     }
     
     //MARK:- Delegate Method
@@ -54,6 +92,19 @@ class InformaionViewController: UIViewController, EditViewControllerDelegate {
     
     func getTextField(index: Int) -> UITextField? {
         return self.informationTextFields[index]
+    }
+    
+    private func isEnableNextView(_ notification: Notification) {
+        guard let dict = notification.userInfo as Dictionary? else { return }
+        if let index = dict["index"] as? Int, let isValid = dict["isValid"] as? Bool {
+            if self.signUp.isEnableNextInformation(index: index, isVaild: isValid) {
+                self.nextButton.isEnabled = true
+                self.nextButton.backgroundColor = .systemGreen
+            } else {
+                self.nextButton.isEnabled = false
+                self.nextButton.backgroundColor = .darkGray
+            }
+        }
     }
     
     @IBAction func previousButtonTapped(_ sender: UIButton) {

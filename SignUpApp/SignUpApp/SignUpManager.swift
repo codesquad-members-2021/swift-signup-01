@@ -15,7 +15,8 @@ class SignUpManager: SignUpManageable {
     //MARK:- 속성
     private var user: UserManageable
     private let textFieldMapper: TextFieldMappable
-    private var isEnabledArray = [false, false, false, false]
+    private var isEnabledInSignUp = [false, false, false, false]
+    private var isEnabledInInfo = [false, false, false]
     
     init(userManageable: UserManageable, textFieldMapper: TextFieldMappable) {
         self.user = userManageable
@@ -27,8 +28,13 @@ class SignUpManager: SignUpManageable {
         return textFieldMapper.mapping(by: index)
     }
     
-    func isEnableNext(index: Int, isVaild: Bool) -> Bool {
-        self.isEnabledArray[index] = isVaild
-        return isEnabledArray[0] && isEnabledArray[1] && isEnabledArray[2] && isEnabledArray[3]
+    func isEnableNextSignUp(index: Int, isVaild: Bool) -> Bool {
+        self.isEnabledInSignUp[index] = isVaild
+        return isEnabledInSignUp[0] && isEnabledInSignUp[1] && isEnabledInSignUp[2] && isEnabledInSignUp[3]
+    }
+    
+    func isEnableNextInformation(index: Int, isVaild: Bool) -> Bool {
+        self.isEnabledInInfo[index] = isVaild
+        return isEnabledInInfo[0] && isEnabledInInfo[1] && isEnabledInInfo[2]
     }
 }

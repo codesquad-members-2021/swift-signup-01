@@ -398,33 +398,22 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="BGd-R2-V1i">
-                                <rect key="frame" x="0.0" y="491" width="390" height="162"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="162" id="b3e-jJ-nf9"/>
-                                </constraints>
-                                <locale key="locale" localeIdentifier="ko_KR"/>
-                            </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ide-pu-Tfd"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="0QU-Hb-Dcm" firstAttribute="trailing" secondItem="blV-mG-2k7" secondAttribute="trailing" id="1b2-ye-8OF"/>
-                            <constraint firstItem="BGd-R2-V1i" firstAttribute="top" secondItem="0QU-Hb-Dcm" secondAttribute="bottom" constant="7.3333333333333144" id="5zG-KB-zlk"/>
                             <constraint firstItem="ide-pu-Tfd" firstAttribute="trailing" secondItem="blV-mG-2k7" secondAttribute="trailing" constant="30" id="7sD-Kc-567"/>
                             <constraint firstItem="0QU-Hb-Dcm" firstAttribute="leading" secondItem="blV-mG-2k7" secondAttribute="leading" id="9SJ-Uz-X2W"/>
                             <constraint firstItem="vWA-Od-CLV" firstAttribute="centerX" secondItem="FE6-2s-LFY" secondAttribute="centerX" id="J5R-yc-0Ua"/>
                             <constraint firstItem="0QU-Hb-Dcm" firstAttribute="top" secondItem="blV-mG-2k7" secondAttribute="bottom" constant="15" id="YUf-2x-yJb"/>
                             <constraint firstItem="blV-mG-2k7" firstAttribute="leading" secondItem="ide-pu-Tfd" secondAttribute="leading" constant="30" id="kXB-PH-B6x"/>
-                            <constraint firstItem="BGd-R2-V1i" firstAttribute="trailing" secondItem="ide-pu-Tfd" secondAttribute="trailing" id="mCC-sl-BQ9"/>
-                            <constraint firstItem="BGd-R2-V1i" firstAttribute="leading" secondItem="ide-pu-Tfd" secondAttribute="leading" id="qKH-Sc-MT1"/>
                             <constraint firstItem="blV-mG-2k7" firstAttribute="top" secondItem="vWA-Od-CLV" secondAttribute="bottom" constant="10" id="rnn-VT-5FZ"/>
                             <constraint firstItem="vWA-Od-CLV" firstAttribute="top" secondItem="ide-pu-Tfd" secondAttribute="top" constant="10" id="se8-QV-eAe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="68R-Pi-QH3"/>
                     <connections>
-                        <outlet property="datePicker" destination="BGd-R2-V1i" id="drM-8L-YCq"/>
                         <outlet property="nextButton" destination="bhn-qq-NPa" id="MBJ-1Y-1RQ"/>
                         <outletCollection property="informationTextFields" destination="bjG-O4-G4A" collectionClass="NSMutableArray" id="aPs-LP-mTT"/>
                         <outletCollection property="informationTextFields" destination="sR2-te-etZ" collectionClass="NSMutableArray" id="bux-9k-FdW"/>
