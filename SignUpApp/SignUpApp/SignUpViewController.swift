@@ -8,8 +8,7 @@
 import UIKit
 import Combine
 
-class SignUpViewController: UIViewController {
-    
+class SignUpViewController: UIViewController, EditViewControllerDelegate {
     @IBOutlet var signUpTextFields: [UITextField]! {
         didSet {
             signUpTextFields.forEach { textField in
@@ -19,30 +18,27 @@ class SignUpViewController: UIViewController {
         }
     }
     @IBOutlet var conditionLabels: [UILabel]!
-    @IBOutlet weak var nextButton: UIButton! {
-        didSet {
-            nextButton.isEnabled = false
-        }
-    }
+    @IBOutlet weak var nextButton: UIButton!
     
     private var signUp: SignUpManageable!
-    private lazy var textFieldDelegate = TextFieldDelegate(self)
     private var textFieldPublisher: AnyCancellable!
+    private lazy var textFieldDelegate = TextFieldDelegate(self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         signUpTextFields.first?.becomeFirstResponder()
+        nextButton.isEnabled = false
 
         signUp = SignUpManager(userManageable: User(), textFieldMapper: TextFieldMapper(userInfos: [ID(), Password(), PasswordConfirm(), Name()]))
-        setPhotosSubscriber()
+        setTextFieldSubscriber()
     }
     
-    private func setPhotosSubscriber() {
+    private func setTextFieldSubscriber() {
         textFieldPublisher = NotificationCenter.default
             .publisher(for: SignUpManager.NotificationName.didUpdateTextField)
             .sink { notification in
                 DispatchQueue.main.async {
-                    self.isEnableNextView(index: notification.object as! Int)
+                    self.isEnableNextView(notification)
                 }
             }
     }
@@ -51,10 +47,36 @@ class SignUpViewController: UIViewController {
         return self.signUp.mapping(by: index)
     }
     
-    func isEnableNextView(index: Int) {
-        if self.signUp.isEnableNext(index: index) {
-            self.nextButton.isEnabled = true
-            self.nextButton.backgroundColor = .systemGreen
+    func getIndex(textField: UITextField) -> Int? {
+        return self.signUpTextFields.firstIndex(of: textField)
+    }
+    
+    func getTextFieldText(index: Int) -> String {
+        return self.signUpTextFields[index].text ?? ""
+    }
+    
+    func setConditionLabelText(index: Int, condition: String) {
+        self.conditionLabels[index].text = condition
+    }
+    
+    func setConditionLabelColor(index: Int, color: UIColor) {
+        self.conditionLabels[index].textColor = color
+    }
+    
+    func getTextField(index: Int) -> UITextField? {
+        return self.signUpTextFields[index]
+    }
+    
+    private func isEnableNextView(_ notification: Notification) {
+        guard let dict = notification.userInfo as Dictionary? else { return }
+        if let index = dict["index"] as? Int, let isValid = dict["isValid"] as? Bool {
+            if self.signUp.isEnableNext(index: index, isVaild: isValid) {
+                self.nextButton.isEnabled = true
+                self.nextButton.backgroundColor = .systemGreen
+            } else {
+                self.nextButton.isEnabled = false
+                self.nextButton.backgroundColor = .darkGray
+            }
         }
     }
     
