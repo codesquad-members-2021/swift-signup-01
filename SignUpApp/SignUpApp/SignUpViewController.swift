@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class SignUpViewController: UIViewController {
     
@@ -21,6 +22,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     
     private var signUp: SignUpManageable!
+    private var textFieldPublisher: AnyCancellable!
     private lazy var textFieldDelegate = TextFieldDelegate(self)
     
     override func viewDidLoad() {
@@ -29,19 +31,25 @@ class SignUpViewController: UIViewController {
         nextButton.isEnabled = false
 
         signUp = SignUpManager(userManageable: User(), textFieldMapper: TextFieldMapper(userInfos: [ID(), Password(), PasswordConfirm(), Name()]))
-        configureTextFieldObserver()
+        setTextFieldSubscriber()
     }
     
-    private func configureTextFieldObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(isEnableNextView(_:)), name: SignUpManager.NotificationName.didUpdateTextField, object: nil)
+    private func setTextFieldSubscriber() {
+        textFieldPublisher = NotificationCenter.default
+            .publisher(for: SignUpManager.NotificationName.didUpdateTextField)
+            .sink { notification in
+                DispatchQueue.main.async {
+                    self.isEnableNextView(notification)
+                }
+            }
     }
     
     func mapping(by index: Int) -> Validatable? {
         return self.signUp.mapping(by: index)
     }
     
-    @objc func isEnableNextView(_ notification: NSNotification) {
-        guard let dict = notification.userInfo as NSDictionary? else { return }
+    private func isEnableNextView(_ notification: Notification) {
+        guard let dict = notification.userInfo as Dictionary? else { return }
         if let index = dict["index"] as? Int, let isValid = dict["isValid"] as? Bool {
             if self.signUp.isEnableNext(index: index, isVaild: isValid) {
                 self.nextButton.isEnabled = true
