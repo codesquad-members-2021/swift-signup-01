@@ -31,7 +31,7 @@ class SignUpViewController: UIViewController, EditViewControllerDelegate {
         nextButton.isEnabled = false
         
         user = User()
-        signUp = SignUpManager(userManageable: user, textFieldMapper: TextFieldMapper(userInfos: [ID(), Password(), PasswordConfirm(), Name()]))
+        signUp = SignUpManager(userManageable: user, textFieldMapper: TextFieldMapper(userInfos: user.getSignUpInfo()))
         setTextFieldSubscriber()
     }
     

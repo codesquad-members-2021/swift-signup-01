@@ -34,7 +34,6 @@ class ID: Validatable, Decodable {
     }
     
     func getID() -> String {
-        print("id", self.id)
         return self.id
     }
     
@@ -51,7 +50,6 @@ class ID: Validatable, Decodable {
     
     func saveProperty(input: String) {
         self.id = input
-        print(self.id)
     }
     
     private func isDuplicated(id: String) -> Bool {
