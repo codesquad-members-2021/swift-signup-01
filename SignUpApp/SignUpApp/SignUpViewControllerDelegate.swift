@@ -22,8 +22,8 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let index = self.editViewController.getIndex(textField: textField) else { return }
         guard let validatable = self.editViewController.mapping(by: index) else { return }
-        
         ValidationFactory.saveProperty(valid: validatable, textFieldText: textField.text ?? "")
+        
         let text = self.editViewController.getTextFieldText(index: index)
         let tuple = ValidationFactory.isValid(valid: validatable, textFieldText: text)
         let isValid = tuple.0
@@ -38,7 +38,11 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        var info = [String: Any]()
+        info["text"] = textField.text ?? ""
+        
         guard let index = self.editViewController.getIndex(textField: textField) else { return false }
+        NotificationCenter.default.post(name: SignUpManager.NotificationName.didUpdateInterests, object: self, userInfo: info)
         
         if let nextResponder = self.editViewController.getTextField(index: index + 1) {
             nextResponder.becomeFirstResponder()
