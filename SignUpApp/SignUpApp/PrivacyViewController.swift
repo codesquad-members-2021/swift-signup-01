@@ -29,6 +29,7 @@ class PrivacyViewController: UIViewController {
     }
     
     private func nextVC() {
-        
+        let pricvacyVC = self.storyboard?.instantiateViewController(withIdentifier: "InterestViewController") as! InterestViewController
+        self.present(pricvacyVC, animated: true, completion: nil)
     }
 }
