@@ -24,10 +24,11 @@ class InformaionViewController: UIViewController, EditViewControllerDelegate {
     private lazy var textFieldDelegate = TextFieldDelegate(self)
     private var textFieldPublisher: AnyCancellable!
     private var datePicker = UIDatePicker()
+    var user: UserManageable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        signUp = SignUpManager(userManageable: User(), textFieldMapper: TextFieldMapper(userInfos: [Birth() ,Email(), PhoneNumber()]))
+        signUp = SignUpManager(userManageable: user, textFieldMapper: TextFieldMapper(userInfos: [Birth() ,Email(), PhoneNumber()]))
         
         nextButton.isEnabled = false
         
@@ -112,7 +113,8 @@ class InformaionViewController: UIViewController, EditViewControllerDelegate {
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
-        let pricvacyVC = self.storyboard?.instantiateViewController(withIdentifier: "PrivacyViewController") as! PrivacyViewController
-        self.present(pricvacyVC, animated: true, completion: nil)
+        let privacyVC = self.storyboard?.instantiateViewController(withIdentifier: "PrivacyViewController") as! PrivacyViewController
+        privacyVC.user = self.user
+        self.present(privacyVC, animated: true, completion: nil)
     }
 }

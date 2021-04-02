@@ -21,15 +21,17 @@ class InterestViewController: UIViewController, EditViewControllerDelegate {
     @IBOutlet weak var nextButton: UIButton!
     
     private var signUp: SignUpManageable!
+    var user: UserManageable!
     private lazy var textFieldDelegate = TextFieldDelegate(self)
     private var interestDataSource: InterestDataSource!
     private var interestsPublisher: AnyCancellable!
+    private let serverURL = "https://8r6ruzgzve.execute-api.ap-northeast-2.amazonaws.com/default/SwiftCamp"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         interestDataSource = InterestDataSource()
         collectionView.dataSource = interestDataSource
-        signUp = SignUpManager(userManageable: User(), textFieldMapper: TextFieldMapper(userInfos: [Interest()]))
+        signUp = SignUpManager(userManageable: self.user, textFieldMapper: TextFieldMapper(userInfos: [Interest()]))
         setInterestsPublisher()
     }
     
@@ -89,8 +91,15 @@ class InterestViewController: UIViewController, EditViewControllerDelegate {
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        let pricvacyVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        self.present(pricvacyVC, animated: true, completion: nil)
+        NetworkHandler.postSource(from: serverURL, json: self.signUp.getInfo()) { (networkResult, error) in
+            print(networkResult, error)
+            print(self.signUp.getInfo()
+            )
+            if networkResult?.status == "200" {
+                let pricvacyVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                self.present(pricvacyVC, animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func previousButtonTapped(_ sender: Any) {

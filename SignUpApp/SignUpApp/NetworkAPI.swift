@@ -213,11 +213,3 @@ struct NetworkResult: Codable {
     let result: String
     let status: String
 }
-
-func test() {
-    let url = "https://8r6ruzgzve.execute-api.ap-northeast-2.amazonaws.com/default/SwiftCamp"
-    let info = ["id": "mansa", "password": "1235678A!"]
-    NetworkHandler.postSource(from: url, json: info) { (networkResult, error) in
-        print(networkResult, error)
-    }
-}

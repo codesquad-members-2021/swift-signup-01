@@ -8,6 +8,7 @@
 import Foundation
 
 protocol SignUpManageable {
+    func getInfo() -> [String: String]
     func mapping(by index: Int) -> Validatable?
     func isEnableNextSignUp(index: Int, isVaild: Bool) -> Bool
     func isEnableNextInformation(index: Int, isVaild: Bool) -> Bool

@@ -27,6 +27,10 @@ class SignUpManager: SignUpManageable {
     }
     
     //MARK:- 행동
+    func getInfo() -> [String: String] {
+        return self.user.getInfo()
+    }
+    
     func mapping(by index: Int) -> Validatable? {
         return textFieldMapper.mapping(by: index)
     }

@@ -9,6 +9,8 @@ import UIKit
 
 class PrivacyViewController: UIViewController {
 
+    var user: UserManageable?
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         configureAgreeAlertControl()
@@ -29,7 +31,8 @@ class PrivacyViewController: UIViewController {
     }
     
     private func nextVC() {
-        let pricvacyVC = self.storyboard?.instantiateViewController(withIdentifier: "InterestViewController") as! InterestViewController
-        self.present(pricvacyVC, animated: true, completion: nil)
+        let interestVC = self.storyboard?.instantiateViewController(withIdentifier: "InterestViewController") as! InterestViewController
+        interestVC.user = self.user
+        self.present(interestVC, animated: true, completion: nil)
     }
 }
