@@ -99,7 +99,7 @@ class NetworkAPI {
     }
     
     //MARK: POST
-   func requestPost(from urlString: String, json: [String: String], completion: @escaping (Result<NetworkResult, NetworkError>) -> Void) {
+    func requestPost(from urlString: String, json: [String: String], completion: @escaping (Result<NetworkResult, NetworkError>) -> Void) {
         
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
@@ -111,10 +111,11 @@ class NetworkAPI {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = jsonData
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(String(jsonData!.count), forHTTPHeaderField: "Content-Length")
 
         performPostTask(request: request, completion: parseJasonForPost(completion: completion))
-        
-}
+    }
 
     private func performPostTask(request: URLRequest, completion: @escaping (Result<Data, NetworkError>) -> Void) {
         // MARK: 3. DataTask

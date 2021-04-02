@@ -41,9 +41,12 @@ class User: UserManageable {
         self.init(id: id, password: password, passwordConfirm: passwordConfirm, name: name, email: email, birth: birth, phoneNumber: phoneNumber, interests: interests)
     }
     
-    func getInfo() -> [String: String] {
-        print("user", [id.getID(): password.getPassword()])
-        return [id.getID(): password.getPassword()]
+    func getInfo() -> [String:String] {
+        return ["id": id.getID(), "password" :password.getPassword()]
+    }
+    
+    func getSignUpInfo() -> [Validatable] {
+        return [self.id, self.password, self.passwordConfirm, self.name]
     }
     
     func isValidId(input id: String) -> (Bool, String) {
