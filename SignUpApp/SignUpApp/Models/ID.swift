@@ -14,18 +14,28 @@ class ID: Validatable, Decodable {
         static let duplictated = "이미 사용중인 아이디입니다"
     }
     
+    private var ids: [String] = []
     private var id: String
+    private var idRepository: String
     
-    init(id: String) {
+    init(id: String, idRepository: String) {
         self.id = id
+        self.idRepository = idRepository
+        
+        NetworkHandler.getSource(from: self.idRepository) { (ids, error) in
+            self.ids = ids ?? []
+        }
     }
     
     convenience init() {
         let id = ""
-        self.init(id: id)
+        let serverAddress = "https://8r6ruzgzve.execute-api.ap-northeast-2.amazonaws.com/default/SwiftCamp"
+        self.init(id: id, idRepository: serverAddress)
     }
     
     func isValid(input: String) -> (Bool, String) {
+        if isDuplicated(id: input) { return (false, Condition.duplictated) }
+        
         let idRegEx = "^[a-z0-9_-]{5,20}$"
         let idValidation = NSPredicate(format: "SELF MATCHES %@", idRegEx)
         let isValid = idValidation.evaluate(with: input)
@@ -36,5 +46,9 @@ class ID: Validatable, Decodable {
     
     func saveProperty(input: String) {
         self.id = input
+    }
+    
+    private func isDuplicated(id: String) -> Bool {
+        return ids.contains(id)
     }
 }

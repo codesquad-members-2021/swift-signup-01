@@ -43,7 +43,28 @@ class NetworkAPI {
         performTask(request: request, completion: parseJason(completion: completion))
     }
     
-    func parseJason (completion: @escaping (Result<ExistID, NetworkError>) -> Void) -> (Result<Data, NetworkError>) -> Void {
+    // error 처리
+    private func performTask(request: URLRequest, completion: @escaping (Result<Data, NetworkError>) -> Void) {
+        // MARK: 3. DataTask
+        session.dataTask(with: request) { data, response, error in
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.failure(.badRequest))
+                return
+            }
+            DispatchQueue.main.async {
+                if let data = data {
+                    completion(.success(data))
+                } else if error != nil {
+                    completion(.failure(NetworkError.init(rawValue: httpResponse.statusCode) ?? .requestFailure))
+                } else {
+                    completion(.failure(.unknown))
+                }
+            }
+        }.resume()
+    }
+    
+    private func parseJason (completion: @escaping (Result<ExistID, NetworkError>) -> Void) -> (Result<Data, NetworkError>) -> Void {
         return { result in
             switch result {
             case .success(let data):
@@ -64,47 +85,26 @@ class NetworkAPI {
                  }
             }
         }
-    }
-    
-    // error 처리
-    func performTask(request: URLRequest, completion: @escaping (Result<Data, NetworkError>) -> Void) {
-        // MARK: 3. DataTask
-        session.dataTask(with: request) { data, response, error in
-
-            guard let httpResponse = response as? HTTPURLResponse else {
-                completion(.failure(.badRequest))
-                return
-            }
-            DispatchQueue.main.async {
-                if let data = data {
-                    completion(.success(data))
-                } else if error != nil {
-                    completion(.failure(NetworkError.init(rawValue: httpResponse.statusCode) ?? .requestFailure))
-                } else {
-                    completion(.failure(.unknown))
-                }
-            }
-        }.resume()
-    }
-    
+    }    
 }
 
-// MARK:- 실행
+// MARK:- handler
 
-let serverAddress = "https://D8r6ruzgzve.execute-api.ap-northeast-2.amazonaws.com/default/SwiftCamp"
-
-func some() {
-    let api = NetworkAPI()
-    api.fetchData(from: serverAddress) { result in
-        switch result {
-        case .success(let response):
-            print(response.self, "👀")
-        case .failure(let error):
-            print(error)
+class NetworkHandler {
+    
+    static func getSource(from serverAddress: String, completion: @escaping ([String]?, Error?) -> ()) {
+        var source = [String]()
+        
+        NetworkAPI().fetchData(from: serverAddress) { result in
+            switch result {
+            case .success(let response):
+                source = response.self
+                completion(source, nil)
+            case .failure(let error):
+                print(error)
+                completion(nil, error)
+            }
         }
     }
 }
-
-
-
 
