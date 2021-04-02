@@ -6,11 +6,92 @@
 //
 
 import UIKit
+import Combine
 
-class InterestViewController: UIViewController {
+class InterestViewController: UIViewController, EditViewControllerDelegate {
 
+    @IBOutlet weak var interestTextField: UITextField! {
+        didSet {
+            interestTextField.delegate = textFieldDelegate
+            interestTextField.returnKeyType = .next
+        }
+    }
+    @IBOutlet weak var conditionLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var nextButton: UIButton!
+    
+    private var signUp: SignUpManageable!
+    private lazy var textFieldDelegate = TextFieldDelegate(self)
+    private var interestDataSource: InterestDataSource!
+    private var interestsPublisher: AnyCancellable!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        interestDataSource = InterestDataSource()
+        collectionView.dataSource = interestDataSource
+        signUp = SignUpManager(userManageable: User(), textFieldMapper: TextFieldMapper(userInfos: [Interest()]))
+        setInterestsPublisher()
+    }
+    
+    private func setInterestsPublisher() {
+        interestsPublisher = NotificationCenter.default
+            .publisher(for: SignUpManager.NotificationName.didUpdateInterests)
+            .sink { notification in
+                DispatchQueue.main.async {
+                    self.updateInterests(notification)
+                }
+            }
+    }
+    
+    func mapping(by index: Int) -> Validatable? {
+        return self.signUp.mapping(by: index)
+    }
+    
+    func getIndex(textField: UITextField) -> Int? {
+        return 0
+    }
+    
+    func getTextFieldText(index: Int) -> String {
+        return self.interestTextField.text ?? ""
+    }
+    
+    func setConditionLabelText(index: Int, condition: String) {
+        self.conditionLabel.text = condition
+    }
+    
+    func setConditionLabelColor(index: Int, color: UIColor) {
+        self.conditionLabel.textColor = color
+    }
+    
+    func getTextField(index: Int) -> UITextField? {
+        return self.interestTextField
+    }
+    
+    private func updateInterests(_ notification: Notification) {
+        guard let dict = notification.userInfo as Dictionary? else { return }
+        if let interest = dict["text"] as? String {
+            self.signUp.appendInterest(input: interest)
+            self.isEnableNextView(interestsCount: self.signUp.readInterestCount())
+            self.interestDataSource = InterestDataSource(interests: self.signUp.readInterests())
+            self.collectionView.dataSource = self.interestDataSource
+            self.collectionView.reloadData()
+        }
+    }
+    
+    private func isEnableNextView(interestsCount: Int) {
+        if interestsCount >= 3 {
+            self.nextButton.isEnabled = true
+            self.nextButton.backgroundColor = .systemGreen
+        } else {
+            self.nextButton.isEnabled = false
+            self.nextButton.backgroundColor = .darkGray
+        }
+    }
+    
+    @IBAction func nextButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func previousButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: .none)
     }
 }
