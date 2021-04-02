@@ -31,6 +31,7 @@ class SignUpViewController: UIViewController, EditViewControllerDelegate {
 
         signUp = SignUpManager(userManageable: User(), textFieldMapper: TextFieldMapper(userInfos: [ID(), Password(), PasswordConfirm(), Name()]))
         setTextFieldSubscriber()
+        some()
     }
     
     private func setTextFieldSubscriber() {

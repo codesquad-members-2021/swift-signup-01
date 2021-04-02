@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ID: Validatable {
+class ID: Validatable, Decodable {
     enum Condition {
         static let valid = "사용 가능한 아이디입니다."
         static let invalid = "5~20자의 영문 소문자, 숫자와 특수기호(_)(-) 만 사용 가능합니다."
