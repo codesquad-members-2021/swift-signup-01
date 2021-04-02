@@ -89,6 +89,8 @@ class InterestViewController: UIViewController, EditViewControllerDelegate {
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
+        let pricvacyVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        self.present(pricvacyVC, animated: true, completion: nil)
     }
     
     @IBAction func previousButtonTapped(_ sender: Any) {
