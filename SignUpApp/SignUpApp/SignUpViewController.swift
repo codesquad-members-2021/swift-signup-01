@@ -52,7 +52,7 @@ class SignUpViewController: UIViewController, EditViewControllerDelegate {
     }
     
     func getTextFieldText(index: Int) -> String {
-        guard let text = index == 2 ? self.signUpTextFields[index+1].text : self.signUpTextFields[index].text ?? "" else { return "" }
+        guard let text = index == 2 ? self.signUpTextFields[index-1].text : self.signUpTextFields[index].text ?? "" else { return "" }
         return text
     }
     
