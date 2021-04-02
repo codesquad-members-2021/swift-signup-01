@@ -8,15 +8,12 @@
 import Foundation
 
 class NetworkAPI {
-    
     typealias ExistID = [String]
-    
-    // MARK: 1. Session 생성
-    private let session = URLSession(configuration: URLSessionConfiguration.default)
-    
+
     enum NetworkError: Int, Error {
         case badURL
-        case requestFailure
+        case invalidResponse
+        case networkingError
         case unknown
         case decodingError
         case badRequest = 400
@@ -27,7 +24,11 @@ class NetworkAPI {
         case systemError = 500
         case endpointError = 503
         case timeout = 504
+        case serverError
     }
+    
+    // MARK: 1. Session 생성
+    private let session = URLSession(configuration: URLSessionConfiguration.default)
     
     
     func fetchData(from urlString: String, completion: @escaping (Result<ExistID, NetworkError>) -> Void) {
@@ -43,22 +44,32 @@ class NetworkAPI {
         performTask(request: request, completion: parseJason(completion: completion))
     }
     
-    // error 처리
+    // network error 처리
     private func performTask(request: URLRequest, completion: @escaping (Result<Data, NetworkError>) -> Void) {
         // MARK: 3. DataTask
         session.dataTask(with: request) { data, response, error in
-
-            guard let httpResponse = response as? HTTPURLResponse else {
-                completion(.failure(.badRequest))
-                return
-            }
             DispatchQueue.main.async {
-                if let data = data {
+                if error != nil {
+                    completion(.failure(.networkingError))
+                    return
+                }
+                guard let httpResponse = response as? HTTPURLResponse, let data = data else {
+                    completion(.failure(.invalidResponse))
+                    return
+                }
+                
+                switch httpResponse.statusCode {
+                case 200:
                     completion(.success(data))
-                } else if error != nil {
-                    completion(.failure(NetworkError.init(rawValue: httpResponse.statusCode) ?? .requestFailure))
-                } else {
-                    completion(.failure(.unknown))
+
+                case 400...499:
+                    completion(.failure(NetworkError(rawValue: httpResponse.statusCode) ?? .unknown))
+
+                case 500...599:
+                    completion(.failure(NetworkError(rawValue: httpResponse.statusCode) ?? .serverError))
+
+                default:
+                    fatalError("Unhandled HTTP status code: \(httpResponse.statusCode)")
                 }
             }
         }.resume()
@@ -85,8 +96,82 @@ class NetworkAPI {
                  }
             }
         }
-    }    
+    }
+    
+    //MARK: POST
+   func requestPost(from urlString: String, json: [String: String], completion: @escaping (Result<NetworkResult, NetworkError>) -> Void) {
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        guard let url = URL(string: urlString) else {
+            completion(.failure(.badURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+
+        performPostTask(request: request, completion: parseJasonForPost(completion: completion))
+        
 }
+
+    private func performPostTask(request: URLRequest, completion: @escaping (Result<Data, NetworkError>) -> Void) {
+        // MARK: 3. DataTask
+        session.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                if error != nil {
+                    completion(.failure(.networkingError))
+                    return
+                }
+                guard let httpResponse = response as? HTTPURLResponse, let data = data else {
+                    completion(.failure(.invalidResponse))
+                    return
+                }
+                
+                switch httpResponse.statusCode {
+                case 200:
+                    completion(.success(data))
+
+                case 400...499:
+                    completion(.failure(NetworkError(rawValue: httpResponse.statusCode) ?? .unknown))
+
+                case 500...599:
+                    completion(.failure(NetworkError(rawValue: httpResponse.statusCode) ?? .serverError))
+
+                default:
+                    fatalError("Unhandled HTTP status code: \(httpResponse.statusCode)")
+                }
+            }
+        }.resume()
+    }
+    
+    private func parseJasonForPost (completion: @escaping (Result<NetworkResult, NetworkError>) -> Void) -> (Result<Data, NetworkError>) -> Void {
+        return { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let object = try jsonDecoder.decode(NetworkResult.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(.success(object))
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(.failure(.decodingError))
+                    }
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                     completion(.failure(error))
+                 }
+            }
+        }
+    }
+    
+}
+
+
 
 // MARK:- handler
 
@@ -106,5 +191,33 @@ class NetworkHandler {
             }
         }
     }
+    
+    static func postSource(from serverAddress: String, json: [String: String], completion: @escaping (NetworkResult?, Error?) -> ()) {
+        
+        NetworkAPI().requestPost(from: serverAddress, json: json) { result in
+            switch result {
+            case .success(let response):
+                completion(response.self, nil)
+            case .failure(let error):
+                print(error)
+                completion(nil, error)
+            }
+        }
+    }
+    
+    
 }
 
+
+struct NetworkResult: Codable {
+    let result: String
+    let status: String
+}
+
+func test() {
+    let url = "https://8r6ruzgzve.execute-api.ap-northeast-2.amazonaws.com/default/SwiftCamp"
+    let info = ["id": "mansa", "password": "1235678A!"]
+    NetworkHandler.postSource(from: url, json: info) { (networkResult, error) in
+        print(networkResult, error)
+    }
+}
