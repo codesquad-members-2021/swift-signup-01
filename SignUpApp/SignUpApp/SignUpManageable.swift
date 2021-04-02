@@ -11,4 +11,7 @@ protocol SignUpManageable {
     func mapping(by index: Int) -> Validatable?
     func isEnableNextSignUp(index: Int, isVaild: Bool) -> Bool
     func isEnableNextInformation(index: Int, isVaild: Bool) -> Bool
+    func appendInterest(input interest: String)
+    func readInterestCount() -> Int
+    func readInterests() -> InterestsManageable
 }
