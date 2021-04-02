@@ -35,6 +35,7 @@
 		934F55CC2611B39C0060588F /* SignUpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55CB2611B39C0060588F /* SignUpManager.swift */; };
 		934F55D12611D34F0060588F /* UserManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55D02611D34F0060588F /* UserManageable.swift */; };
 		934F55D526120C960060588F /* SignUpManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55D426120C960060588F /* SignUpManageable.swift */; };
+		AE0C504A2615B9A90016B40E /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C50492615B9A90016B40E /* NetworkAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		934F55CB2611B39C0060588F /* SignUpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpManager.swift; sourceTree = "<group>"; };
 		934F55D02611D34F0060588F /* UserManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManageable.swift; sourceTree = "<group>"; };
 		934F55D426120C960060588F /* SignUpManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpManageable.swift; sourceTree = "<group>"; };
+		AE0C50492615B9A90016B40E /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 				933A1E5F261703000017FFBD /* Privacy */,
 				933A1E63261703180017FFBD /* Information */,
 				933A1E67261703260017FFBD /* SignUp */,
+				AE0C50492615B9A90016B40E /* NetworkAPI.swift */,
 				934F55AB2611988E0060588F /* Main.storyboard */,
 				934F55AE2611988F0060588F /* Assets.xcassets */,
 				934F55B02611988F0060588F /* LaunchScreen.storyboard */,
@@ -340,6 +343,7 @@
 				933A1E2926158C240017FFBD /* Email.swift in Sources */,
 				933A1E39261598D40017FFBD /* InformaionViewController.swift in Sources */,
 				934F55A82611988E0060588F /* SceneDelegate.swift in Sources */,
+				AE0C504A2615B9A90016B40E /* NetworkAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,13 +492,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				DEVELOPMENT_TEAM = T79FMP6Q2L;
 				INFOPLIST_FILE = SignUpApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kr.codesquad.SignUpApp;
+				PRODUCT_BUNDLE_IDENTIFIER = SignUpApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -509,13 +513,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				DEVELOPMENT_TEAM = T79FMP6Q2L;
 				INFOPLIST_FILE = SignUpApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kr.codesquad.SignUpApp;
+				PRODUCT_BUNDLE_IDENTIFIER = SignUpApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
