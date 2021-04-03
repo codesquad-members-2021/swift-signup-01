@@ -92,9 +92,6 @@ class InterestViewController: UIViewController, EditViewControllerDelegate {
     
     @IBAction func nextButtonTapped(_ sender: Any) {
         NetworkHandler.postSource(from: serverURL, json: self.signUp.getInfo()) { (networkResult, error) in
-            print(networkResult, error)
-            print(self.signUp.getInfo()
-            )
             if networkResult?.status == "200" {
                 let pricvacyVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
                 self.present(pricvacyVC, animated: true, completion: nil)

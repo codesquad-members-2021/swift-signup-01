@@ -200,7 +200,6 @@ class NetworkHandler {
             case .success(let response):
                 completion(response.self, nil)
             case .failure(let error):
-                print(error)
                 completion(nil, error)
             }
         }
