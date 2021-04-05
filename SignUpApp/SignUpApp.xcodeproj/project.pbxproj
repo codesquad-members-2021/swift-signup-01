@@ -16,6 +16,14 @@
 		933A1E2926158C240017FFBD /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E2826158C240017FFBD /* Email.swift */; };
 		933A1E2C26158C5D0017FFBD /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E2B26158C5D0017FFBD /* PhoneNumber.swift */; };
 		933A1E2F26158C6C0017FFBD /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E2E26158C6C0017FFBD /* Name.swift */; };
+		933A1E39261598D40017FFBD /* InformaionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E38261598D40017FFBD /* InformaionViewController.swift */; };
+		933A1E3C2615A3A60017FFBD /* Birth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E3B2615A3A60017FFBD /* Birth.swift */; };
+		933A1E3F2615F7070017FFBD /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E3E2615F7060017FFBD /* PrivacyViewController.swift */; };
+		933A1E422615FD450017FFBD /* InterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E412615FD450017FFBD /* InterestViewController.swift */; };
+		933A1E4526160C280017FFBD /* InterestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E4426160C280017FFBD /* InterestCell.swift */; };
+		933A1E4826160FAA0017FFBD /* InterestDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E4726160FAA0017FFBD /* InterestDataSource.swift */; };
+		933A1E4B261610570017FFBD /* Interests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E4A261610570017FFBD /* Interests.swift */; };
+		933A1E502616FEC70017FFBD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A1E4F2616FEC70017FFBD /* LoginViewController.swift */; };
 		934F55A62611988E0060588F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55A52611988E0060588F /* AppDelegate.swift */; };
 		934F55A82611988E0060588F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55A72611988E0060588F /* SceneDelegate.swift */; };
 		934F55AA2611988E0060588F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55A92611988E0060588F /* SignUpViewController.swift */; };
@@ -23,11 +31,11 @@
 		934F55AF2611988F0060588F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 934F55AE2611988F0060588F /* Assets.xcassets */; };
 		934F55B22611988F0060588F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 934F55B02611988F0060588F /* LaunchScreen.storyboard */; };
 		934F55BB26119AE70060588F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55BA26119AE70060588F /* User.swift */; };
-		934F55C026119B880060588F /* Information.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55BF26119B880060588F /* Information.swift */; };
-		934F55C42611A7D90060588F /* SignUpViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55C32611A7D90060588F /* SignUpViewControllerDelegate.swift */; };
+		934F55C42611A7D90060588F /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55C32611A7D90060588F /* TextFieldDelegate.swift */; };
 		934F55CC2611B39C0060588F /* SignUpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55CB2611B39C0060588F /* SignUpManager.swift */; };
 		934F55D12611D34F0060588F /* UserManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55D02611D34F0060588F /* UserManageable.swift */; };
 		934F55D526120C960060588F /* SignUpManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F55D426120C960060588F /* SignUpManageable.swift */; };
+		AE0C504A2615B9A90016B40E /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C50492615B9A90016B40E /* NetworkAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +48,14 @@
 		933A1E2826158C240017FFBD /* Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
 		933A1E2B26158C5D0017FFBD /* PhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumber.swift; sourceTree = "<group>"; };
 		933A1E2E26158C6C0017FFBD /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
+		933A1E38261598D40017FFBD /* InformaionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformaionViewController.swift; sourceTree = "<group>"; };
+		933A1E3B2615A3A60017FFBD /* Birth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Birth.swift; sourceTree = "<group>"; };
+		933A1E3E2615F7060017FFBD /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		933A1E412615FD450017FFBD /* InterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestViewController.swift; sourceTree = "<group>"; };
+		933A1E4426160C280017FFBD /* InterestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestCell.swift; sourceTree = "<group>"; };
+		933A1E4726160FAA0017FFBD /* InterestDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestDataSource.swift; sourceTree = "<group>"; };
+		933A1E4A261610570017FFBD /* Interests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interests.swift; sourceTree = "<group>"; };
+		933A1E4F2616FEC70017FFBD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		934F55A22611988E0060588F /* SignUpApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignUpApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		934F55A52611988E0060588F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		934F55A72611988E0060588F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,11 +65,11 @@
 		934F55B12611988F0060588F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		934F55B32611988F0060588F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		934F55BA26119AE70060588F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		934F55BF26119B880060588F /* Information.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Information.swift; sourceTree = "<group>"; };
-		934F55C32611A7D90060588F /* SignUpViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewControllerDelegate.swift; sourceTree = "<group>"; };
+		934F55C32611A7D90060588F /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		934F55CB2611B39C0060588F /* SignUpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpManager.swift; sourceTree = "<group>"; };
 		934F55D02611D34F0060588F /* UserManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManageable.swift; sourceTree = "<group>"; };
 		934F55D426120C960060588F /* SignUpManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpManageable.swift; sourceTree = "<group>"; };
+		AE0C50492615B9A90016B40E /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +83,117 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		933A1E52261702A10017FFBD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				934F55D426120C960060588F /* SignUpManageable.swift */,
+				934F55D02611D34F0060588F /* UserManageable.swift */,
+				933A1E1C2615672C0017FFBD /* ViewControllerProtocol.swift */,
+				934F55C32611A7D90060588F /* TextFieldDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		933A1E55261702D50017FFBD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				933A1E56261702DA0017FFBD /* Controllers */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		933A1E56261702DA0017FFBD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				933A1E4F2616FEC70017FFBD /* LoginViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		933A1E58261702E40017FFBD /* Interests */ = {
+			isa = PBXGroup;
+			children = (
+				933A1E6B261703570017FFBD /* Models */,
+				933A1E5D261702F90017FFBD /* Views */,
+				933A1E5A261702EC0017FFBD /* Controllers */,
+			);
+			path = Interests;
+			sourceTree = "<group>";
+		};
+		933A1E5A261702EC0017FFBD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				933A1E412615FD450017FFBD /* InterestViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		933A1E5D261702F90017FFBD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				933A1E4726160FAA0017FFBD /* InterestDataSource.swift */,
+				933A1E4426160C280017FFBD /* InterestCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		933A1E5F261703000017FFBD /* Privacy */ = {
+			isa = PBXGroup;
+			children = (
+				933A1E61261703070017FFBD /* Controllers */,
+			);
+			path = Privacy;
+			sourceTree = "<group>";
+		};
+		933A1E61261703070017FFBD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				933A1E3E2615F7060017FFBD /* PrivacyViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		933A1E63261703180017FFBD /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				933A1E65261703200017FFBD /* Controllers */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
+		933A1E65261703200017FFBD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				933A1E38261598D40017FFBD /* InformaionViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		933A1E67261703260017FFBD /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				934F55BD26119AEC0060588F /* Models */,
+				933A1E692617032D0017FFBD /* Controllers */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		933A1E692617032D0017FFBD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				934F55A92611988E0060588F /* SignUpViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		933A1E6B261703570017FFBD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				933A1E4A261610570017FFBD /* Interests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		934F55992611988E0060588F = {
 			isa = PBXGroup;
 			children = (
@@ -88,18 +215,17 @@
 			children = (
 				934F55A52611988E0060588F /* AppDelegate.swift */,
 				934F55A72611988E0060588F /* SceneDelegate.swift */,
-				934F55A92611988E0060588F /* SignUpViewController.swift */,
-				934F55C32611A7D90060588F /* SignUpViewControllerDelegate.swift */,
-				933A1E1C2615672C0017FFBD /* ViewControllerProtocol.swift */,
-				933A1E0D2613350E0017FFBD /* ValidationFactory.swift */,
-				933A1E10261335230017FFBD /* TextFieldMapper.swift */,
-				934F55CB2611B39C0060588F /* SignUpManager.swift */,
-				934F55D426120C960060588F /* SignUpManageable.swift */,
+				933A1E52261702A10017FFBD /* Protocols */,
+				933A1E55261702D50017FFBD /* Login */,
+				933A1E58261702E40017FFBD /* Interests */,
+				933A1E5F261703000017FFBD /* Privacy */,
+				933A1E63261703180017FFBD /* Information */,
+				933A1E67261703260017FFBD /* SignUp */,
+				AE0C50492615B9A90016B40E /* NetworkAPI.swift */,
 				934F55AB2611988E0060588F /* Main.storyboard */,
 				934F55AE2611988F0060588F /* Assets.xcassets */,
 				934F55B02611988F0060588F /* LaunchScreen.storyboard */,
 				934F55B32611988F0060588F /* Info.plist */,
-				934F55BD26119AEC0060588F /* Models */,
 			);
 			path = SignUpApp;
 			sourceTree = "<group>";
@@ -111,11 +237,13 @@
 				933A1E1F26158BAE0017FFBD /* ID.swift */,
 				933A1E2226158BCF0017FFBD /* Password.swift */,
 				933A1E2526158BF90017FFBD /* PasswordConfirm.swift */,
-				934F55BF26119B880060588F /* Information.swift */,
 				933A1E2826158C240017FFBD /* Email.swift */,
+				933A1E3B2615A3A60017FFBD /* Birth.swift */,
 				933A1E2B26158C5D0017FFBD /* PhoneNumber.swift */,
 				933A1E2E26158C6C0017FFBD /* Name.swift */,
-				934F55D02611D34F0060588F /* UserManageable.swift */,
+				933A1E0D2613350E0017FFBD /* ValidationFactory.swift */,
+				933A1E10261335230017FFBD /* TextFieldMapper.swift */,
+				934F55CB2611B39C0060588F /* SignUpManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -193,21 +321,29 @@
 				933A1E2026158BAE0017FFBD /* ID.swift in Sources */,
 				933A1E1D2615672C0017FFBD /* ViewControllerProtocol.swift in Sources */,
 				933A1E2626158BF90017FFBD /* PasswordConfirm.swift in Sources */,
+				933A1E3C2615A3A60017FFBD /* Birth.swift in Sources */,
+				933A1E4826160FAA0017FFBD /* InterestDataSource.swift in Sources */,
 				934F55BB26119AE70060588F /* User.swift in Sources */,
-				934F55C42611A7D90060588F /* SignUpViewControllerDelegate.swift in Sources */,
+				934F55C42611A7D90060588F /* TextFieldDelegate.swift in Sources */,
+				933A1E422615FD450017FFBD /* InterestViewController.swift in Sources */,
 				934F55AA2611988E0060588F /* SignUpViewController.swift in Sources */,
+				933A1E4B261610570017FFBD /* Interests.swift in Sources */,
 				933A1E2F26158C6C0017FFBD /* Name.swift in Sources */,
 				933A1E11261335230017FFBD /* TextFieldMapper.swift in Sources */,
 				933A1E2C26158C5D0017FFBD /* PhoneNumber.swift in Sources */,
+				933A1E502616FEC70017FFBD /* LoginViewController.swift in Sources */,
+				933A1E4526160C280017FFBD /* InterestCell.swift in Sources */,
 				934F55D12611D34F0060588F /* UserManageable.swift in Sources */,
 				934F55A62611988E0060588F /* AppDelegate.swift in Sources */,
 				934F55D526120C960060588F /* SignUpManageable.swift in Sources */,
 				934F55CC2611B39C0060588F /* SignUpManager.swift in Sources */,
 				933A1E2326158BCF0017FFBD /* Password.swift in Sources */,
 				933A1E0E2613350E0017FFBD /* ValidationFactory.swift in Sources */,
-				934F55C026119B880060588F /* Information.swift in Sources */,
+				933A1E3F2615F7070017FFBD /* PrivacyViewController.swift in Sources */,
 				933A1E2926158C240017FFBD /* Email.swift in Sources */,
+				933A1E39261598D40017FFBD /* InformaionViewController.swift in Sources */,
 				934F55A82611988E0060588F /* SceneDelegate.swift in Sources */,
+				AE0C504A2615B9A90016B40E /* NetworkAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,13 +492,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				DEVELOPMENT_TEAM = T79FMP6Q2L;
 				INFOPLIST_FILE = SignUpApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kr.codesquad.SignUpApp;
+				PRODUCT_BUNDLE_IDENTIFIER = SignUpApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -377,13 +513,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				DEVELOPMENT_TEAM = T79FMP6Q2L;
 				INFOPLIST_FILE = SignUpApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kr.codesquad.SignUpApp;
+				PRODUCT_BUNDLE_IDENTIFIER = SignUpApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

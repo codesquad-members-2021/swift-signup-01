@@ -8,6 +8,8 @@
 import Foundation
 
 protocol UserManageable {
+    func getInfo() -> [String: String]
+    func getSignUpInfo() -> [Validatable]
     func isValidId(input id: String) -> (Bool, String)
     func isValidPassword(input pwd: String) -> (Bool, String)
 }

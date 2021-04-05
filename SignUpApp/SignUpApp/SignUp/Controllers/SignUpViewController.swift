@@ -21,6 +21,7 @@ class SignUpViewController: UIViewController, EditViewControllerDelegate {
     @IBOutlet weak var nextButton: UIButton!
     
     private var signUp: SignUpManageable!
+    private var user: UserManageable!
     private var textFieldPublisher: AnyCancellable!
     private lazy var textFieldDelegate = TextFieldDelegate(self)
     
@@ -28,8 +29,9 @@ class SignUpViewController: UIViewController, EditViewControllerDelegate {
         super.viewDidLoad()
         signUpTextFields.first?.becomeFirstResponder()
         nextButton.isEnabled = false
-
-        signUp = SignUpManager(userManageable: User(), textFieldMapper: TextFieldMapper(userInfos: [ID(), Password(), PasswordConfirm(), Name()]))
+        
+        user = User()
+        signUp = SignUpManager(userManageable: user, textFieldMapper: TextFieldMapper(userInfos: user.getSignUpInfo()))
         setTextFieldSubscriber()
     }
     
@@ -52,7 +54,8 @@ class SignUpViewController: UIViewController, EditViewControllerDelegate {
     }
     
     func getTextFieldText(index: Int) -> String {
-        return self.signUpTextFields[index].text ?? ""
+        guard let text = index == 2 ? self.signUpTextFields[index-1].text : self.signUpTextFields[index].text ?? "" else { return "" }
+        return text
     }
     
     func setConditionLabelText(index: Int, condition: String) {
@@ -70,7 +73,7 @@ class SignUpViewController: UIViewController, EditViewControllerDelegate {
     private func isEnableNextView(_ notification: Notification) {
         guard let dict = notification.userInfo as Dictionary? else { return }
         if let index = dict["index"] as? Int, let isValid = dict["isValid"] as? Bool {
-            if self.signUp.isEnableNext(index: index, isVaild: isValid) {
+            if self.signUp.isEnableNextSignUp(index: index, isVaild: isValid) {
                 self.nextButton.isEnabled = true
                 self.nextButton.backgroundColor = .systemGreen
             } else {
@@ -81,6 +84,9 @@ class SignUpViewController: UIViewController, EditViewControllerDelegate {
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
+        let informationVC = self.storyboard?.instantiateViewController(withIdentifier: "InformaionViewController") as! InformaionViewController
+        informationVC.user = self.user
+        self.present(informationVC, animated: true, completion: nil)
     }
 }
 

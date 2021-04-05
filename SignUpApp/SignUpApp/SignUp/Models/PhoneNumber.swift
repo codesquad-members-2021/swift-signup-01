@@ -9,7 +9,7 @@ import Foundation
 
 class PhoneNumber: Validatable {
     enum Condition {
-        static let valid = ""
+        static let valid = "올바른 형식입니다"
         static let invalid = "형식에 맞지 않는 번호입니다."
     }
     
@@ -25,7 +25,7 @@ class PhoneNumber: Validatable {
     }
     
     func isValid(input: String) -> (Bool, String) {
-        let phoneNumberRegex = "^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$"
+        let phoneNumberRegex = "^010-(?=.*[0-9]).{3,4}-(?=.*[0-9]).{4}$"
         let phoneNumberValidation = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegex)
         let isValid = phoneNumberValidation.evaluate(with: input)
         let condition = isValid ? Condition.valid : Condition.invalid

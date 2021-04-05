@@ -29,6 +29,10 @@ class Password: Validatable {
     
     //MARK: -METHOD
     
+    func getPassword() -> String {
+        return self.password
+    }
+    
     func isValid(input: String) -> (Bool, String) {
         if !checkLength(input: input).0 { return checkLength(input: input) }
         if !checkCapital(input: input).0 { return checkCapital(input: input) }
